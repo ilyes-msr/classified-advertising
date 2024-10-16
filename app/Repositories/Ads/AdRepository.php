@@ -38,4 +38,9 @@ class AdRepository implements AdInterface
       $ad->images()->save($image);
     }
   }
+
+  public function getByUser()
+  {
+    return $this->ads->where('user_id', auth()->id())->get();
+  }
 }

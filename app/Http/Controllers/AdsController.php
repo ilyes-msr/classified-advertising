@@ -14,11 +14,6 @@ class AdsController extends Controller
         $this->ads = $ad;
     }
 
-    public function all()
-    {
-        $ads = $this->ads->all();
-    }
-
     public function create()
     {
         // dd(storage_path('app/public/images/thumbs'));
@@ -27,8 +22,14 @@ class AdsController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
+
         $this->ads->store($request);
         return back()->with('success', 'تم انشاء الإعلان');
+    }
+
+    public function myAds()
+    {
+        $ads = $this->ads->getByUser();
+        return view('ads.myads', compact('ads'));
     }
 }
