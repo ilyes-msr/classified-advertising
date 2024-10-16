@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\View\Composers\CategoriesComposer;
+use App\View\Composers\CurrenciesComposer;
 use App\View\Composers\CountryComposer;
 use Illuminate\Support\Facades;
 use Illuminate\Support\ServiceProvider;
@@ -15,11 +16,13 @@ class ViewServiceProvider extends ServiceProvider
   {
     $this->app->singleton(CategoriesComposer::class);
     $this->app->singleton(CountryComposer::class);
+    $this->app->singleton(CurrenciesComposer::class);
   }
 
   public function boot(): void
   {
     Facades\View::composer(['partials.categoryNav', 'partials.searchfrm', 'lists.categories'], CategoriesComposer::class);
     Facades\View::composer(['partials.searchfrm', 'lists.countries'], CountryComposer::class);
+    Facades\View::composer('lists.currencies', CurrenciesComposer::class);
   }
 }
