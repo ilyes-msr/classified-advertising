@@ -9,6 +9,7 @@
         @auth
           <a class="nav-link" href="{{ url('/dashboard') }}">{{ __('لوحة التحكم') }}</a>
           <a class="nav-link" href="{{ route('ads.create') }}">أضف إعلانا جديدا</a>
+          <a class="nav-link" href="{{ route('ads.myads') }}">إعلاناتي</a>
         @else
         <a class="nav-link" href="{{ route('login') }}">{{ __('دخول') }}</a>
             @if (Route::has('register'))

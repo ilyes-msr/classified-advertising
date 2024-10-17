@@ -29,6 +29,17 @@ class AdRepository implements AdInterface
     }
   }
 
+  public function update($request, $id)
+  {
+
+
+    $ad = Ad::findOrFail($id);
+
+    $slug = GeneralHelper::createUniqueSlug($request->input('title'), new Ad);
+
+    $ad->update($request->all() + ['slug' => $slug]);
+  }
+
   public function storeImages($ad, $imgArray)
   {
     foreach ($imgArray as $img) {

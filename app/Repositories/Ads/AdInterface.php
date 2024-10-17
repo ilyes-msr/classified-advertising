@@ -9,7 +9,7 @@ interface AdInterface
   public function store($request);
   // public function getDetails($id);
   // public function getById($id);
-  // public function update($request, $id);
+  public function update($request, $id);
   public function getByUser();
   public function storeImages($ad, $imgArray);
 
